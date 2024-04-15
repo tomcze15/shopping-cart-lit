@@ -1,0 +1,4 @@
+node_modules/*
+web-dev-server.config.js
+dist/*
+.idea/
