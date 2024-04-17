@@ -1,5 +1,7 @@
+export type ProductId = string;
+
 export interface IProductConfig {
+  id?: ProductId;
   name: string;
-  icon: string;
-  isActive: boolean;
+  isChecked: boolean;
 }

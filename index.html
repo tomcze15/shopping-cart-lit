@@ -1,11 +1,15 @@
-<!doctype html>
-
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Lit Starter Kit</title>
+    <title>Shopping List App</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script
+      type="module"
+      src="../dist/features/shopping_list/ui/components/shopping_list.js"
+    ></script>
   </head>
   <body>
-    <a href="/dev/index.html">Component Demo</a>
+    <shopping-list></shopping-list>
   </body>
 </html>

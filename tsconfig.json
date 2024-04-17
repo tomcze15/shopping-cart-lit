@@ -3,6 +3,7 @@
     "target": "es2021",
     "module": "es2020",
     "lib": ["es2021", "DOM", "DOM.Iterable"],
+    "typeRoots": ["node_modules/@types", "src"],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -30,7 +31,8 @@
     "types": ["mocha"],
     "baseUrl": ".",
     "paths": {
-      "@models/*": ["src/models/*"]
+      "@models/*": ["src/models/*"],
+      "@features/*": ["src/features/*"]
     }
   },
   "include": ["src/**/*.ts"],

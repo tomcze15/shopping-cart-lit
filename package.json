@@ -1,5 +1,5 @@
 {
-  "name": "shop-basket",
+  "name": "shopping-list",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -16,15 +16,20 @@
     "test:dev": "wtr",
     "test:watch": "wtr --watch",
     "test:prod": "MODE=prod wtr",
-    "test:prod:watch": "MODE=prod wtr --watch"
+    "test:prod:watch": "MODE=prod wtr --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "lit": "^3.1.2"
+    "@datorama/akita": "^8.0.1",
+    "lit": "^3.1.2",
+    "rxjs": "^7.8.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@open-wc/testing": "^4.0.0",
     "@types/jest": "^29.5.12",
     "@types/mocha": "^10.0.6",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
     "@web/dev-server": "^0.4.4",
@@ -32,6 +37,7 @@
     "@web/test-runner-playwright": "^0.11.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
     "lit-analyzer": "^2.0.3",
     "mocha": "^10.4.0",
     "prettier": "^3.2.5",

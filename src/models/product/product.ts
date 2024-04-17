@@ -1,13 +1,14 @@
-import { IProductConfig } from '@models/product/product_types';
+import { v4 as uuidv4 } from 'uuid';
+import { IProductConfig } from '../product/product_types';
 
 export class Product {
+  id: string;
   public name: string;
-  public icon: string;
-  public isActive: boolean;
+  public isChecked: boolean;
 
-  constructor({ name, icon, isActive }: IProductConfig) {
+  constructor({ id, name, isChecked }: IProductConfig) {
+    this.id = id || uuidv4();
     this.name = name;
-    this.icon = icon;
-    this.isActive = isActive;
+    this.isChecked = isChecked;
   }
 }
