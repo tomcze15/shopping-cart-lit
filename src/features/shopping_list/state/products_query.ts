@@ -14,12 +14,6 @@ export class ProductsQuery extends QueryEntity<IProductState> {
     return this.selectAll();
   }
 
-  public selectCheckedProducts$(): Observable<Product[]> {
-    return this.selectAll({
-      filterBy: (product) => product.isChecked,
-    });
-  }
-
   public getCheckedProducts(): Product[] {
     return this.getAll({
       filterBy: (entity) => entity.isChecked,

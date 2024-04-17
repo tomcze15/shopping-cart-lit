@@ -37,8 +37,4 @@ export class ProductsRepository {
   public updateProductChecked(id: ProductId, isChecked: boolean) {
     this.store.updateProductChecked(id, isChecked);
   }
-
-  updateProductName(id: ProductId, newName: string) {
-    this.store.update(id, { name: newName });
-  }
 }

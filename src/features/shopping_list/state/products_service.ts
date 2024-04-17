@@ -1,16 +1,20 @@
+import { Observable } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 import { Product } from '../../../models/product/product';
 import { ProductId } from '../../../models/product/product_types';
 import { ProductsRepository } from '../../shopping_list/state/products_repository';
-
-import { Observable } from 'rxjs';
 
 export class ProductsService {
   constructor(private productsRepository: ProductsRepository) {}
 
   public addProduct(product: Product) {
-    if (Product.name === '') return;
+    if (product.name === '') return;
 
-    this.productsRepository.addProduct(product);
+    if (!product.id) {
+      product.id = uuidv4();
+    }
+
+    if (product) this.productsRepository.addProduct(product);
   }
 
   public removeProduct(productId: ProductId) {

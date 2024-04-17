@@ -1,19 +1,24 @@
-// import { IProductsApi } from '@features/shopping_list/api/products_api_types';
-// import { ProductId } from '@features/shopping_list/state/products_state_types';
-// import { ProductsService } from '@features/shopping_list/state/products_service';
-
+import { Observable } from 'rxjs';
 import { IProductsApi } from '../../shopping_list/api/products_api_types';
 import { ProductId } from '../../../models/product/product_types';
 import { ProductsService } from '../../shopping_list/state/products_service';
-
-import { Observable } from 'rxjs';
-import { Product } from '@models/product/product';
+import { Product } from '../../../models/product/product';
 
 export class ProductsApi implements IProductsApi {
   productsService: ProductsService;
 
   constructor(productsService: ProductsService) {
     this.productsService = productsService;
+  }
+
+  addProduct(productName: string) {
+    this.productsService.addProduct(
+      new Product({ name: productName, isChecked: false })
+    );
+  }
+
+  removeProduct(productId: ProductId) {
+    this.productsService.removeProduct(productId);
   }
 
   selectProducts(): Observable<Product[]> {
@@ -24,12 +29,6 @@ export class ProductsApi implements IProductsApi {
     return this.productsService.getAllProducts();
   }
 
-  checkProduct(id: ProductId): void {
-    id;
-  }
-  uncheckProduct(id: ProductId): void {
-    id;
-  }
   checkAllProducts(): void {}
   uncheckAllProducts(): void {}
 
