@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import '../../../../shared/components/basic_button';
 import ShoppingListEventEmitter from '../../../shopping_list/events/shopping_list_event_emitter';
+import '../../../../shared/components/basic_button';
 
 @customElement('actions-buttons')
 export class ActionsButtons extends LitElement {
@@ -15,7 +15,9 @@ export class ActionsButtons extends LitElement {
 
   override render() {
     return html`
-      <basic-button .onClick="${this._handleCheckAllProduct}"
+      <basic-button
+        .type="${'success'}"
+        .onClick="${this._handleCheckAllProduct}"
         ><span>Check All</span></basic-button
       >
       <basic-button .onClick="${this._handleUncheckAllProduct}"

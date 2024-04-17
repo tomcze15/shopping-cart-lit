@@ -4,37 +4,71 @@ import { property, customElement } from 'lit/decorators.js';
 @customElement('basic-button')
 export class BasicButton extends LitElement {
   static override styles = css`
-    button {
-      padding: 8px 16px;
-      font-size: 16px;
-      background-color: #007bff;
-      color: white;
+    .button {
+      padding: 3px 13px;
+      font-size: 13px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition:
+        background-color 0.3s,
+        color 0.3s;
     }
 
-    button:hover,
-    button:focus {
-      background-color: #0056b3;
+    .button--basic {
+      background-color: #808080;
+      color: white;
     }
 
-    button:active {
-      background-color: #00408b;
+    .button--basic:hover,
+    .button--basic:focus {
+      background-color: #2e2e2e;
+    }
+
+    .button--basic:active {
+      background-color: #000000;
+    }
+
+    .button--error {
+      background-color: #ff4d4f;
+      color: white;
+    }
+
+    .button--error:hover,
+    .button--error:focus {
+      background-color: #cc0000;
+    }
+
+    .button--error:active {
+      background-color: #990000;
+    }
+
+    .button--success {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .button--success:hover,
+    .button--success:focus {
+      background-color: #087f23;
+    }
+
+    .button--success:active {
+      background-color: #005f15;
     }
   `;
 
   @property({ type: Function })
-  onClick?: (event?: HTMLButtonElement) => void;
+  onClick?: (event?: MouseEvent) => void;
+
+  @property({ type: String })
+  type: 'basic' | 'error' | 'success' = 'basic';
 
   override render() {
     return html`<button
-      @click="${(event: MouseEvent) => {
-        if (this.onClick) {
-          this.onClick(event.currentTarget as HTMLButtonElement);
-        }
-      }}"
+      class="button button--${this.type}"
+      @click="${(event: MouseEvent) =>
+        this.onClick ? this.onClick(event) : null}"
     >
       <slot></slot>
     </button>`;

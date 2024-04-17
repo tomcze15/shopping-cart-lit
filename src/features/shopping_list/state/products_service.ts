@@ -18,6 +18,7 @@ export class ProductsService {
   }
 
   public removeProduct(productId: ProductId) {
+    if (!productId) return;
     this.productsRepository.removeProductById(productId);
   }
 
