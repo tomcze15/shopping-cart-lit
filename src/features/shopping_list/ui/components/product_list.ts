@@ -5,6 +5,9 @@ import { ProductsApi } from '../../../shopping_list/api/products_api';
 import { ShoppingListInitializer } from '../../../shopping_list/shopping_list_initializer';
 import { Product } from '../../../../models/product/product';
 import ShoppingListEventEmitter from '../../../shopping_list/events/shopping_list_event_emitter';
+import { akitaDevtools } from '@datorama/akita';
+
+akitaDevtools();
 
 import './product_list_item';
 
@@ -31,7 +34,6 @@ export class Product_list extends LitElement {
   constructor() {
     super();
     this._productsApi = new ProductsApi(new ShoppingListInitializer().init());
-    this.products = this._productsApi.getAllProducts();
     this.subscribeToProducts();
 
     ShoppingListEventEmitter.onAddProduct((productName) => {
@@ -41,6 +43,14 @@ export class Product_list extends LitElement {
     ShoppingListEventEmitter.onDeleteProduct((productId) => {
       this._productsApi.removeProduct(productId);
     });
+
+    ShoppingListEventEmitter.onCheckAllProducts(() =>
+      this._productsApi.checkAllProducts()
+    );
+
+    ShoppingListEventEmitter.onUncheckAllProducts(() =>
+      this._productsApi.uncheckAllProducts()
+    );
   }
 
   private subscribeToProducts() {
@@ -55,7 +65,6 @@ export class Product_list extends LitElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
     this.subscription?.unsubscribe();
-    ShoppingListEventEmitter.clearAll();
   }
 
   private _handleClick(event: Event) {

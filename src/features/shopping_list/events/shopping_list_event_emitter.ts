@@ -1,83 +1,51 @@
 import {
-  ADD_PRODUCT_EVENT_NAME,
   AddProductEvent,
-  DELETE_PRODUCT_EVENT_NAME,
   DeleteProductEvent,
+  ADD_PRODUCT_EVENT_NAME,
+  UNCHECK_ALL_PRODUCTS_EVENT_NAME,
+  CHECK_ALL_PRODUCTS_EVENT_NAME,
+  DELETE_PRODUCT_EVENT_NAME,
 } from '../../shopping_list/events/shopping_list_events';
 import { ProductId } from '../../../models/product/product_types';
+import { EventEmitter } from '../../../shared/events/event_emitter';
 
-class ShoppingListEventEmitter {
-  private dispatcher: EventTarget;
-  private addProductListener?: (event: Event) => void;
-  private deleteProductListener?: (event: Event) => void;
-
-  constructor() {
-    this.dispatcher = document.createElement('div');
-  }
-
-  private _createAddProductEvent(
-    productName: string
-  ): CustomEvent<AddProductEvent> {
-    return new CustomEvent<AddProductEvent>(ADD_PRODUCT_EVENT_NAME, {
-      detail: { name: productName },
+class ShoppingListEventEmitter extends EventEmitter {
+  emitAddProduct(productName: string) {
+    this.emitEvent<AddProductEvent>(ADD_PRODUCT_EVENT_NAME, {
+      name: productName,
     });
-  }
-
-  private _createDeleteProductEvent(
-    productId: ProductId
-  ): CustomEvent<DeleteProductEvent> {
-    return new CustomEvent<DeleteProductEvent>(DELETE_PRODUCT_EVENT_NAME, {
-      detail: { id: productId },
-    });
-  }
-
-  emitEventAddProduct(productName: string) {
-    const event = this._createAddProductEvent(productName);
-    this.dispatcher.dispatchEvent(event);
   }
 
   onAddProduct(callback: (productName: string) => void) {
-    this.addProductListener = (event: Event) => {
-      const customEvent = event as CustomEvent<AddProductEvent>;
-      callback(customEvent.detail.name);
-    };
-
-    this.dispatcher.addEventListener(
-      ADD_PRODUCT_EVENT_NAME,
-      this.addProductListener
+    this.onEvent<AddProductEvent>(ADD_PRODUCT_EVENT_NAME, (data) =>
+      callback(data.name)
     );
   }
 
   emitDeleteProduct(id: ProductId) {
-    const event = this._createDeleteProductEvent(id);
-    this.dispatcher.dispatchEvent(event);
+    this.emitEvent<DeleteProductEvent>(DELETE_PRODUCT_EVENT_NAME, { id });
   }
 
   onDeleteProduct(callback: (productId: ProductId) => void) {
-    this.deleteProductListener = (event: Event) => {
-      const customEvent = event as CustomEvent<DeleteProductEvent>;
-      callback(customEvent.detail.id);
-    };
-    this.dispatcher.addEventListener(
-      DELETE_PRODUCT_EVENT_NAME,
-      this.deleteProductListener
+    this.onEvent<DeleteProductEvent>(DELETE_PRODUCT_EVENT_NAME, (data) =>
+      callback(data.id)
     );
   }
 
-  clearAll() {
-    if (this.addProductListener) {
-      this.dispatcher.removeEventListener(
-        ADD_PRODUCT_EVENT_NAME,
-        this.addProductListener
-      );
-    }
+  emitCheckAllProducts() {
+    this.emitEvent(CHECK_ALL_PRODUCTS_EVENT_NAME);
+  }
 
-    if (this.deleteProductListener) {
-      this.dispatcher.removeEventListener(
-        DELETE_PRODUCT_EVENT_NAME,
-        this.deleteProductListener
-      );
-    }
+  onCheckAllProducts(callback: () => void) {
+    this.onEvent<void>(CHECK_ALL_PRODUCTS_EVENT_NAME, () => callback());
+  }
+
+  emitUncheckAllProducts() {
+    this.emitEvent(UNCHECK_ALL_PRODUCTS_EVENT_NAME);
+  }
+
+  onUncheckAllProducts(callback: () => void) {
+    this.onEvent<void>(UNCHECK_ALL_PRODUCTS_EVENT_NAME, () => callback());
   }
 }
 

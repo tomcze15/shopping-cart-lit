@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { Product } from '../../../models/product/product';
 import { ProductId } from '../../../models/product/product_types';
@@ -53,5 +53,27 @@ export class ProductsService {
 
   public getCheckedProducts() {
     return this.productsRepository.getCheckedProducts();
+  }
+
+  public checkAllProducts() {
+    this.selectProducts()
+      .pipe(map((products) => products.filter((product) => !product.isChecked)))
+      .subscribe((products) => {
+        products.forEach((product) => {
+          this.checkProduct(product.id);
+        });
+      })
+      .unsubscribe();
+  }
+
+  public uncheckAllProducts() {
+    this.selectProducts()
+      .pipe(map((products) => products.filter((product) => product.isChecked)))
+      .subscribe((products) => {
+        products.forEach((product) => {
+          this.uncheckProduct(product.id);
+        });
+      })
+      .unsubscribe();
   }
 }

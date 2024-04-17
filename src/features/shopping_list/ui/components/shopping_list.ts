@@ -3,6 +3,8 @@ import { customElement } from 'lit/decorators.js';
 
 import './product_list';
 import './input_add_product';
+import './actions_buttons';
+import '../../../../shared/components/basic_button';
 
 @customElement('shopping-list')
 export class ShoppingList extends LitElement {
@@ -14,6 +16,7 @@ export class ShoppingList extends LitElement {
     return html`
       <input-add-product></input-add-product>
       <product-list></product-list>
+      <actions-buttons></actions-buttons>
     `;
   }
 }

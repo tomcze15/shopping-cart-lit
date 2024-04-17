@@ -17,7 +17,7 @@ export class InputAddProduct extends LitElement {
   }
 
   private _handleEnter(value: string) {
-    ShoppingListEventEmitter.emitEventAddProduct(value);
+    ShoppingListEventEmitter.emitAddProduct(value);
   }
 
   private _handleKeydown(event: KeyboardEvent) {

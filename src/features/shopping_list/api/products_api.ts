@@ -25,12 +25,13 @@ export class ProductsApi implements IProductsApi {
     return this.productsService.selectProducts();
   }
 
-  getAllProducts(): Product[] {
-    return this.productsService.getAllProducts();
+  checkAllProducts(): void {
+    this.productsService.checkAllProducts();
   }
 
-  checkAllProducts(): void {}
-  uncheckAllProducts(): void {}
+  uncheckAllProducts(): void {
+    this.productsService.uncheckAllProducts();
+  }
 
   toggleProduct(id: ProductId) {
     const product = this.productsService.getProductById(id);
