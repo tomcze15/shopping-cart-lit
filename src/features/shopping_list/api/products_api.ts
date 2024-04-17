@@ -5,44 +5,44 @@ import { ProductsService } from '../../shopping_list/state/products_service';
 import { Product } from '../../../models/product/product';
 
 export class ProductsApi implements IProductsApi {
-  productsService: ProductsService;
+  private _productsService: ProductsService;
 
   constructor(productsService: ProductsService) {
-    this.productsService = productsService;
+    this._productsService = productsService;
   }
 
-  addProduct(productName: string) {
-    this.productsService.addProduct(
+  public addProduct(productName: string) {
+    this._productsService.addProduct(
       new Product({ name: productName, isChecked: false })
     );
   }
 
-  removeProduct(productId: ProductId) {
-    this.productsService.removeProduct(productId);
+  public removeProduct(productId: ProductId) {
+    this._productsService.removeProduct(productId);
   }
 
-  selectProducts(): Observable<Product[]> {
-    return this.productsService.selectProducts();
+  public selectProducts(): Observable<Product[]> {
+    return this._productsService.selectProducts();
   }
 
-  checkAllProducts(): void {
-    this.productsService.checkAllProducts();
+  public checkAllProducts(): void {
+    this._productsService.checkAllProducts();
   }
 
-  uncheckAllProducts(): void {
-    this.productsService.uncheckAllProducts();
+  public uncheckAllProducts(): void {
+    this._productsService.uncheckAllProducts();
   }
 
-  toggleProduct(id: ProductId) {
-    const product = this.productsService.getProductById(id);
+  public toggleProduct(id: ProductId) {
+    const product = this._productsService.getProductById(id);
 
     if (!product) return;
 
     if (product.isChecked) {
-      this.productsService.uncheckProduct(id);
+      this._productsService.uncheckProduct(id);
       return;
     }
 
-    this.productsService.checkProduct(id);
+    this._productsService.checkProduct(id);
   }
 }

@@ -5,10 +5,6 @@ import { ProductsApi } from '../../../shopping_list/api/products_api';
 import { ShoppingListInitializer } from '../../../shopping_list/shopping_list_initializer';
 import { Product } from '../../../../models/product/product';
 import ShoppingListEventEmitter from '../../../shopping_list/events/shopping_list_event_emitter';
-import { akitaDevtools } from '@datorama/akita';
-
-akitaDevtools();
-
 import './product_list_item';
 
 @customElement('product-list')
@@ -16,7 +12,7 @@ export class Product_list extends LitElement {
   @property({ type: Array }) products: Product[] = [];
 
   private _productsApi: ProductsApi;
-  private subscription?: Subscription;
+  private _productsSubscription?: Subscription;
 
   static override styles = css`
     .product-list {
@@ -34,7 +30,7 @@ export class Product_list extends LitElement {
   constructor() {
     super();
     this._productsApi = new ProductsApi(new ShoppingListInitializer().init());
-    this.subscribeToProducts();
+    this._subscribeToProducts();
 
     ShoppingListEventEmitter.onAddProduct((productName) => {
       this._productsApi.addProduct(productName);
@@ -53,8 +49,8 @@ export class Product_list extends LitElement {
     );
   }
 
-  private subscribeToProducts() {
-    this.subscription = this._productsApi
+  private _subscribeToProducts() {
+    this._productsSubscription = this._productsApi
       .selectProducts()
       .subscribe((products) => {
         this.products = products;
@@ -64,7 +60,7 @@ export class Product_list extends LitElement {
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-    this.subscription?.unsubscribe();
+    this._productsSubscription?.unsubscribe();
   }
 
   private _handleClick(event: Event) {

@@ -27,10 +27,6 @@ export class ProductListItem extends LitElement {
     }
   `;
 
-  constructor() {
-    super();
-  }
-
   private _onDeleteClick(event: Event): void {
     event.stopPropagation();
     ShoppingListEventEmitter.emitDeleteProduct(this.productId);

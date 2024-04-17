@@ -4,10 +4,6 @@ import ShoppingListEventEmitter from '../../../shopping_list/events/shopping_lis
 
 @customElement('input-add-product')
 export class InputAddProduct extends LitElement {
-  constructor() {
-    super();
-  }
-
   override render() {
     return html`<input
       type="text"

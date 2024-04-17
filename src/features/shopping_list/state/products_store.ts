@@ -9,7 +9,7 @@ export class ProductsStore extends EntityStore<IProductState> {
     super(INITIAL_PRODUCTS_STATE);
   }
 
-  updateProductChecked(id: ProductId, isChecked: boolean) {
+  public updateProductChecked(id: ProductId, isChecked: boolean) {
     this.update(id, { isChecked });
   }
 }

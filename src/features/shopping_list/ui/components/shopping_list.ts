@@ -8,10 +8,6 @@ import '../../../../shared/components/basic_button';
 
 @customElement('shopping-list')
 export class ShoppingList extends LitElement {
-  constructor() {
-    super();
-  }
-
   override render() {
     return html`
       <input-add-product></input-add-product>
