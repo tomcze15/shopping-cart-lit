@@ -1,7 +1,7 @@
 import { EntityStore, StoreConfig } from '@datorama/akita';
-import { IProductState } from '../../shopping_list/state/products_state_types';
-import { INITIAL_PRODUCTS_STATE } from '../../shopping_list/state/products_state_constants';
-import { ProductId } from '../../../models/product/product_types';
+import { IProductState } from '@features/shopping_list/state/products_state_types';
+import { INITIAL_PRODUCTS_STATE } from '@features/shopping_list/state/products_state_constants';
+import { ProductId } from '@models/product/product_types';
 
 @StoreConfig({ name: 'Products' })
 export class ProductsStore extends EntityStore<IProductState> {

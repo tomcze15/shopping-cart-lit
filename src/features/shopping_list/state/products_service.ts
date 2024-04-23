@@ -1,8 +1,8 @@
 import { map, Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
-import { Product } from '../../../models/product/product';
-import { ProductId } from '../../../models/product/product_types';
-import { ProductsRepository } from '../../shopping_list/state/products_repository';
+import { Product } from '@models/product/product';
+import { ProductId } from '@models/product/product_types';
+import { ProductsRepository } from '@features/shopping_list/state/products_repository';
 
 export class ProductsService {
   constructor(private productsRepository: ProductsRepository) {}
@@ -38,10 +38,6 @@ export class ProductsService {
     }
 
     this.productsRepository.updateProductChecked(productId, isChecked);
-  }
-
-  public getAllProducts() {
-    return this.productsRepository.getAllProduct();
   }
 
   public getProductById(id: ProductId) {

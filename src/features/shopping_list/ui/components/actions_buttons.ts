@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import ShoppingListEventEmitter from '../../../shopping_list/events/shopping_list_event_emitter';
-import '../../../../shared/components/basic_button';
+import ShoppingListEventEmitter from '@features/shopping_list/events/shopping_list_event_emitter';
+import '@shared/components/basic_button';
 
 @customElement('actions-buttons')
 export class ActionsButtons extends LitElement {

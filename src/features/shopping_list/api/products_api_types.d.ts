@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { Product } from '../../../models/product/product';
-import { ProductId } from '../../../models/product/product_types';
+import { Product } from '@models/product/product';
+import { ProductId } from '@models/product/product_types';
 
 export interface IProductsApi {
   addProduct(productName: string): void;

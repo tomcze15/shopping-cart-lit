@@ -1,8 +1,8 @@
-import { ProductsStore } from '../../shopping_list/state/products_store';
-import { Product } from '../../../models/product/product';
-import { ProductId } from '../../../models/product/product_types';
-import { ProductsQuery } from '../../shopping_list/state/products_query';
 import { Observable } from 'rxjs';
+import { ProductsStore } from '@features/shopping_list/state/products_store';
+import { Product } from '@models/product/product';
+import { ProductId } from '@models/product/product_types';
+import { ProductsQuery } from '@features/shopping_list/state/products_query';
 
 export class ProductsRepository {
   constructor(

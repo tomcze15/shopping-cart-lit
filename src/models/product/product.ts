@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { IProductConfig } from '../product/product_types';
+import { IProductConfig } from '@models/product/product_types';
 
 export class Product {
   id: string;

@@ -58,7 +58,7 @@ export class BasicButton extends LitElement {
     }
   `;
 
-  @property({ type: Function })
+  @property()
   onClick?: (event?: MouseEvent) => void;
 
   @property({ type: String })

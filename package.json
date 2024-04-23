@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
+    "build": "tsc && vite build",
+    "build:watch": "vite",
+    "preview": "vite preview",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:eslint": "eslint \"src/**/*.ts\"",
     "lint:lit-analyzer": "lit-analyzer",
@@ -42,6 +43,8 @@
     "lit-analyzer": "^2.0.3",
     "mocha": "^10.4.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vite": "^5.2.0",
+    "vite-tsconfig-paths": "^4.3.2"
   }
 }

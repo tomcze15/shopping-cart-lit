@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { IProductsApi } from '../../shopping_list/api/products_api_types';
-import { ProductId } from '../../../models/product/product_types';
-import { ProductsService } from '../../shopping_list/state/products_service';
-import { Product } from '../../../models/product/product';
+import { IProductsApi } from '@features/shopping_list/api/products_api_types';
+import { ProductsService } from '@features/shopping_list/state/products_service';
+import { ProductId } from '@models/product/product_types';
+import { Product } from '@models/product/product';
 
 export class ProductsApi implements IProductsApi {
   private _productsService: ProductsService;

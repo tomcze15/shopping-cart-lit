@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { IProductState } from '../../shopping_list/state/products_state_types';
-import { Product } from '../../../models/product/product';
+import { IProductState } from '@features/shopping_list/state/products_state_types';
+import { Product } from '@models/product/product';
 
 export const INITIAL_PRODUCTS: Product[] = [
   {

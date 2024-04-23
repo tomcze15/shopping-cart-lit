@@ -1,11 +1,11 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Subscription } from 'rxjs';
-import { ProductsApi } from '../../../shopping_list/api/products_api';
-import { ShoppingListInitializer } from '../../../shopping_list/shopping_list_initializer';
-import { Product } from '../../../../models/product/product';
-import ShoppingListEventEmitter from '../../../shopping_list/events/shopping_list_event_emitter';
-import './product_list_item';
+import { ProductsApi } from '@features/shopping_list/api/products_api';
+import { ShoppingListInitializer } from '@features/shopping_list/shopping_list_initializer.ts';
+import { Product } from '@models/product/product.ts';
+import ShoppingListEventEmitter from '@features/shopping_list/events/shopping_list_event_emitter';
+import '@features/shopping_list/ui/components/product_list_item.ts';
 
 @customElement('product-list')
 export class Product_list extends LitElement {

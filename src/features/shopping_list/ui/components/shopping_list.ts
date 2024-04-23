@@ -1,9 +1,9 @@
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import './product_list';
-import './input_add_product';
-import './actions_buttons';
-import '../../../../shared/components/basic_button';
+import '@shared/components/basic_button';
+import '@features/shopping_list/ui/components/product_list.ts';
+import '@features/shopping_list/ui/components/input_add_product.ts';
+import '@features/shopping_list/ui/components/actions_buttons.ts';
 
 import { akitaDevtools } from '@datorama/akita';
 akitaDevtools();
