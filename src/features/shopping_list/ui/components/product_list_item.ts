@@ -24,7 +24,7 @@ export class ProductListItem extends LitElement {
     .product-list-item__product {
       flex-grow: 1;
       margin-right: 10px;
-      font-size: 16px;
+      font-size: 1.2rem;
       transition:
         color 0.3s ease,
         text-decoration 0.3s ease;
@@ -54,7 +54,7 @@ export class ProductListItem extends LitElement {
   override render() {
     return html`
       <div
-        class="product-list-item__container  ${this.isChecked
+        class="product-list-item__container ${this.isChecked
           ? 'product-list-item__container--checked'
           : ''}"
       >

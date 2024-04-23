@@ -4,56 +4,57 @@ import { property, customElement } from 'lit/decorators.js';
 @customElement('basic-button')
 export class BasicButton extends LitElement {
   static override styles = css`
-    .button {
+    .btn {
       padding: 3px 13px;
-      font-size: 13px;
+      font-size: 1rem;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       transition:
         background-color 0.3s,
         color 0.3s;
+      height: 3rem;
     }
 
-    .button--basic {
+    .btn--basic {
       background-color: #808080;
       color: white;
     }
 
-    .button--basic:hover,
-    .button--basic:focus {
+    .btn--basic:hover,
+    .btn--basic:focus {
       background-color: #2e2e2e;
     }
 
-    .button--basic:active {
+    .btn--basic:active {
       background-color: #000000;
     }
 
-    .button--error {
+    .btn--error {
       background-color: #ff4d4f;
       color: white;
     }
 
-    .button--error:hover,
-    .button--error:focus {
+    .btn--error:hover,
+    .btn--error:focus {
       background-color: #cc0000;
     }
 
-    .button--error:active {
+    .btn--error:active {
       background-color: #990000;
     }
 
-    .button--success {
+    .btn--success {
       background-color: #4caf50;
       color: white;
     }
 
-    .button--success:hover,
-    .button--success:focus {
+    .btn--success:hover,
+    .btn--success:focus {
       background-color: #087f23;
     }
 
-    .button--success:active {
+    .btn--success:active {
       background-color: #005f15;
     }
   `;
@@ -66,7 +67,7 @@ export class BasicButton extends LitElement {
 
   override render() {
     return html`<button
-      class="button button--${this.type}"
+      class="btn btn--${this.type}"
       @click="${(event: MouseEvent) =>
         this.onClick ? this.onClick(event) : null}"
     >
