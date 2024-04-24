@@ -1,5 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import { translate as t } from 'lit-i18n';
 import '@shared/components/basic_button';
 import '@features/shopping_list/ui/components/product_list.ts';
 import '@features/shopping_list/ui/components/input_add_product.ts';
@@ -30,7 +31,7 @@ export class ShoppingList extends LitElement {
 
   override render() {
     return html`
-      <div class="header">Shopping List</div>
+      <div class="header">${t('Shopping List')}</div>
       <input-add-product></input-add-product>
       <product-list></product-list>
       <actions-buttons></actions-buttons>

@@ -1,5 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import { translate as t } from 'lit-i18n';
 import ShoppingListEventEmitter from '@features/shopping_list/events/shopping_list_event_emitter';
 import '@shared/components/basic_button';
 
@@ -31,17 +32,17 @@ export class ActionsButtons extends LitElement {
         <basic-button
           .type="${'success'}"
           .onClick="${this._handleCheckAllProduct}"
-          ><span>Check All</span></basic-button
+          ><span>${t('Check All')}</span></basic-button
         >
         <basic-button .onClick="${this._handleUncheckAllProduct}"
-          ><span>Uncheck All</span></basic-button
+          ><span>${t('Uncheck All')}</span></basic-button
         >
       </div>
 
       <basic-button
         .type="${'error'}"
         .onClick="${this._handleDeleteAllProduct}"
-        ><span>Delete All</span></basic-button
+        ><span>${t('Delete All')}</span></basic-button
       >
     `;
   }

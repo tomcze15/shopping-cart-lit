@@ -1,5 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { translate as t } from 'lit-i18n';
 import ShoppingListEventEmitter from '@features/shopping_list/events/shopping_list_event_emitter';
 import { ProductId } from '@models/product/product_types';
 import '@shared/components/basic_button';
@@ -62,7 +63,7 @@ export class ProductListItem extends LitElement {
         <basic-button
           .type="${'error'}"
           .onClick="${(event: MouseEvent) => this._onDeleteClick(event)}"
-          >Delete</basic-button
+          >${t('Delete')}</basic-button
         >
       </div>
     `;

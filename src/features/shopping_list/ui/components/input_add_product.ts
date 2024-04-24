@@ -1,5 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 import { css, html, LitElement } from 'lit';
+import { translate as t } from 'lit-i18n';
 import ShoppingListEventEmitter from '@features/shopping_list/events/shopping_list_event_emitter';
 
 @customElement('input-add-product')
@@ -34,7 +35,7 @@ export class InputAddProduct extends LitElement {
     return html`<input
       type="text"
       @keydown="${this._handleKeydown}"
-      placeholder="Product name"
+      placeholder="${t('Shopping List')}"
     />`;
   }
 
