@@ -5,6 +5,7 @@ import {
   UNCHECK_ALL_PRODUCTS_EVENT_NAME,
   CHECK_ALL_PRODUCTS_EVENT_NAME,
   DELETE_PRODUCT_EVENT_NAME,
+  DELETE_ALL_PRODUCTS_EVENT_NAME,
 } from '@features/shopping_list/events/shopping_list_events';
 import { ProductId } from '@models/product/product_types';
 import { EventEmitter } from '@shared/events/event_emitter';
@@ -46,6 +47,14 @@ class ShoppingListEventEmitter extends EventEmitter {
 
   public onUncheckAllProducts(callback: () => void) {
     this.onEvent<void>(UNCHECK_ALL_PRODUCTS_EVENT_NAME, () => callback());
+  }
+
+  public emitDeleteAllProducts() {
+    this.emitEvent(DELETE_ALL_PRODUCTS_EVENT_NAME);
+  }
+
+  public onDeleteAllProducts(callback: () => void) {
+    this.onEvent<void>(DELETE_ALL_PRODUCTS_EVENT_NAME, () => callback());
   }
 }
 

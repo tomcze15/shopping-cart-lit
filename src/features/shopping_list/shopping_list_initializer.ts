@@ -16,8 +16,14 @@ export class ShoppingListInitializer {
 
     const productsService = new ProductsService(productsRepository);
 
+    this._listeningAllEvents(productsService);
+
+    return productsService;
+  }
+
+  private _listeningAllEvents(service: ProductsService): void {
     ShoppingListEventEmitter.onAddProduct((productName) => {
-      productsService.addProduct(
+      service.addProduct(
         new Product({
           name: productName,
           isChecked: false,
@@ -26,17 +32,19 @@ export class ShoppingListInitializer {
     });
 
     ShoppingListEventEmitter.onDeleteProduct((productId) => {
-      productsService.removeProduct(productId);
+      service.removeProduct(productId);
     });
 
     ShoppingListEventEmitter.onCheckAllProducts(() =>
-      productsService.checkAllProducts()
+      service.checkAllProducts()
     );
 
     ShoppingListEventEmitter.onUncheckAllProducts(() =>
-      productsService.uncheckAllProducts()
+      service.uncheckAllProducts()
     );
 
-    return productsService;
+    ShoppingListEventEmitter.onDeleteAllProducts(() =>
+      service.deleteAllProducts()
+    );
   }
 }

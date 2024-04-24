@@ -60,9 +60,13 @@ export class ProductsService {
       .unsubscribe();
   }
 
-  public isAllChecked(): Observable<boolean> {
-    return this.selectProducts$().pipe(
-      map((products) => products.every((product) => product.isChecked))
-    );
+  public deleteAllProducts() {
+    this.selectProducts$()
+      .subscribe((products) => {
+        products.forEach((product) => {
+          this.removeProduct(product.id);
+        });
+      })
+      .unsubscribe();
   }
 }

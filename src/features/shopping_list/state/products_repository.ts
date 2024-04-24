@@ -26,10 +26,6 @@ export class ProductsRepository {
     this.store.remove(id);
   }
 
-  public getCheckedProducts(): Product[] {
-    return this.query.getCheckedProducts();
-  }
-
   public updateProductChecked(id: ProductId, isChecked: boolean) {
     this.store.updateProductChecked(id, isChecked);
   }
