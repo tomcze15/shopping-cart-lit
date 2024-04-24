@@ -30,30 +30,16 @@ export class ProductsService {
     this.productsRepository.updateProductChecked(productId, true);
   }
 
-  public updateProductChecked(productId: ProductId, isChecked: boolean) {
-    const currentProduct = this.productsRepository.getProductById(productId);
-
-    if (!currentProduct || currentProduct.isChecked === isChecked) {
-      return;
-    }
-
-    this.productsRepository.updateProductChecked(productId, isChecked);
-  }
-
   public getProductById(id: ProductId) {
     return this.productsRepository.getProductById(id);
   }
 
-  public selectProducts(): Observable<Product[]> {
+  public selectProducts$(): Observable<Product[]> {
     return this.productsRepository.selectProducts$();
   }
 
-  public getCheckedProducts() {
-    return this.productsRepository.getCheckedProducts();
-  }
-
   public checkAllProducts() {
-    this.selectProducts()
+    this.selectProducts$()
       .pipe(map((products) => products.filter((product) => !product.isChecked)))
       .subscribe((products) => {
         products.forEach((product) => {
@@ -64,7 +50,7 @@ export class ProductsService {
   }
 
   public uncheckAllProducts() {
-    this.selectProducts()
+    this.selectProducts$()
       .pipe(map((products) => products.filter((product) => product.isChecked)))
       .subscribe((products) => {
         products.forEach((product) => {
@@ -72,5 +58,11 @@ export class ProductsService {
         });
       })
       .unsubscribe();
+  }
+
+  public isAllChecked(): Observable<boolean> {
+    return this.selectProducts$().pipe(
+      map((products) => products.every((product) => product.isChecked))
+    );
   }
 }

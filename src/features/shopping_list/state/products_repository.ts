@@ -10,10 +10,6 @@ export class ProductsRepository {
     private query: ProductsQuery
   ) {}
 
-  public getAllProduct(): Product[] {
-    return this.query.getAll();
-  }
-
   public getProductById(id: ProductId): Product | undefined {
     return this.query.getEntity(id);
   }

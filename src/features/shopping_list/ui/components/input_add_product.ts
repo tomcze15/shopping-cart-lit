@@ -5,8 +5,12 @@ import ShoppingListEventEmitter from '@features/shopping_list/events/shopping_li
 @customElement('input-add-product')
 export class InputAddProduct extends LitElement {
   static override styles = css`
+    :host {
+      display: flex;
+      flex-direction: column;
+    }
+
     input {
-      width: 100%;
       padding: 8px 10px;
       font-size: 16px;
       border: 2px solid #ccc;
@@ -16,6 +20,7 @@ export class InputAddProduct extends LitElement {
         border-color 0.3s,
         box-shadow 0.3s;
     }
+
     input:focus {
       border-color: #0066cc;
       box-shadow:

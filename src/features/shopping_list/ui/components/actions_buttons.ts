@@ -13,6 +13,10 @@ export class ActionsButtons extends LitElement {
     ShoppingListEventEmitter.emitUncheckAllProducts();
   };
 
+  constructor() {
+    super();
+  }
+
   override render() {
     return html`
       <basic-button

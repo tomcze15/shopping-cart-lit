@@ -5,44 +5,44 @@ import { ProductId } from '@models/product/product_types';
 import { Product } from '@models/product/product';
 
 export class ProductsApi implements IProductsApi {
-  private _productsService: ProductsService;
+  private productsService: ProductsService;
 
   constructor(productsService: ProductsService) {
-    this._productsService = productsService;
+    this.productsService = productsService;
   }
 
   public addProduct(productName: string) {
-    this._productsService.addProduct(
+    this.productsService.addProduct(
       new Product({ name: productName, isChecked: false })
     );
   }
 
   public removeProduct(productId: ProductId) {
-    this._productsService.removeProduct(productId);
+    this.productsService.removeProduct(productId);
   }
 
   public selectProducts(): Observable<Product[]> {
-    return this._productsService.selectProducts();
+    return this.productsService.selectProducts$();
   }
 
   public checkAllProducts(): void {
-    this._productsService.checkAllProducts();
+    this.productsService.checkAllProducts();
   }
 
   public uncheckAllProducts(): void {
-    this._productsService.uncheckAllProducts();
+    this.productsService.uncheckAllProducts();
   }
 
   public toggleProduct(id: ProductId) {
-    const product = this._productsService.getProductById(id);
+    const product = this.productsService.getProductById(id);
 
     if (!product) return;
 
     if (product.isChecked) {
-      this._productsService.uncheckProduct(id);
+      this.productsService.uncheckProduct(id);
       return;
     }
 
-    this._productsService.checkProduct(id);
+    this.productsService.checkProduct(id);
   }
 }
