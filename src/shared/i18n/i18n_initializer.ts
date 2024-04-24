@@ -16,7 +16,3 @@ export function initI18n(defaultLanguage: LanguageType = LANGUAGES.en) {
     },
   });
 }
-
-export function changeLanguage(newLanguage: LanguageType) {
-  i18next.changeLanguage(newLanguage.toString());
-}
