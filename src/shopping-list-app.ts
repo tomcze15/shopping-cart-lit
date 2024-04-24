@@ -2,6 +2,7 @@ import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { akitaDevtools } from '@datorama/akita';
 import '@features/shopping_list/ui/components/shopping_list.ts';
+import { initI18n } from '@shared/i18n/i18n_initializer.ts';
 
 @customElement('shopping-list-app')
 export class ShoppingListApp extends LitElement {
@@ -22,6 +23,7 @@ export class ShoppingListApp extends LitElement {
   constructor() {
     super();
     akitaDevtools();
+    initI18n();
   }
 
   override render() {
